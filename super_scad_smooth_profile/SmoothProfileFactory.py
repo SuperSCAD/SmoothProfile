@@ -9,8 +9,8 @@ from super_scad_smooth_profile.SmoothProfile import SmoothProfile
 class SmoothProfileFactory(ABC):
     """
     A smooth profile factory is an abstract base class for smooth profile factories. A smooth profile factory is an
-    object that creates a smooth profile SUpeSCAD widget given an inner angle, a normal angle, and a position of a
-    node and its two vertices, a.k.a., a Smooth or edge.
+    object that creates a smooth profile SuperSCAD widget given an inner angle, a normal angle, and a position of a
+    node and its two vertices, a.k.a., a corner or edge.
     """
 
     # ------------------------------------------------------------------------------------------------------------------
