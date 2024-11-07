@@ -1,4 +1,4 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Any, Dict
 
 from super_scad.scad.ScadSingleChildParent import ScadSingleChildParent
@@ -20,7 +20,8 @@ class SmoothProfile(ScadSingleChildParent, ABC):
         """
         Object constructor.
 
-        :param args: The arguments of the smooth profile.
+        :param args: The arguments of the smooth profile. Must include the following keys: inner_angle,
+                     normal_angle, and position.
         :param child: The child object on which the profile is applied.
         """
         ScadSingleChildParent.__init__(self, args=args, child=child)
@@ -48,5 +49,21 @@ class SmoothProfile(ScadSingleChildParent, ABC):
         Returns the position of the node.
         """
         return self.uc(self._args['position'])
+
+    # ------------------------------------------------------------------------------------------------------------------
+    @abstractmethod
+    def size1(self) -> float:
+        """
+        Returns the size of the profile on the first vertex at the node.
+        """
+        raise NotImplementedError()
+
+    # ------------------------------------------------------------------------------------------------------------------
+    @abstractmethod
+    def size2(self) -> float:
+        """
+        Returns the size of the profile on the second vertex at the node.
+        """
+        raise NotImplementedError()
 
 # ----------------------------------------------------------------------------------------------------------------------
