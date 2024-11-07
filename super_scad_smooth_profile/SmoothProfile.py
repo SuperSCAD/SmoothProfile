@@ -51,6 +51,7 @@ class SmoothProfile(ScadSingleChildParent, ABC):
         return self.uc(self._args['position'])
 
     # ------------------------------------------------------------------------------------------------------------------
+    @property
     @abstractmethod
     def size1(self) -> float:
         """
@@ -59,6 +60,7 @@ class SmoothProfile(ScadSingleChildParent, ABC):
         raise NotImplementedError()
 
     # ------------------------------------------------------------------------------------------------------------------
+    @property
     @abstractmethod
     def size2(self) -> float:
         """
