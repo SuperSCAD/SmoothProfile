@@ -20,8 +20,8 @@ SuperSCAD interfaces for smooth profile widgets.
 <a href="https://badge.fury.io/py/Super-SCAD-Smooth-Profile" target="_blank"><img src="https://badge.fury.io/py/Super-SCAD-Smooth-Profile.svg" alt="Latest Stable Version"/></a><br/>
 </td>
 <td>
-<a href="https://codecov.io/gh/SuperSCAD/RegularPolygon" target="_blank"><img src="https://codecov.io/gh/SuperSCAD/RegularPolygon/graph/badge.svg?token=7D8V8RRY11" alt="Code Coverage"/></a>
-<a href="https://github.com/SuperSCAD/RegularPolygon/actions/workflows/unit.yml"><img src="https://github.com/SuperSCAD/RegularPolygon/actions/workflows/unit.yml/badge.svg" alt="unit Tests"/></a>
+<a href="https://codecov.io/gh/SuperSCAD/SmoothProfile" target="_blank"><img src="https://codecov.io/gh/SuperSCAD/SmoothProfile/graph/badge.svg" alt="Code Coverage"/></a>
+<a href="https://github.com/SuperSCAD/SmoothProfile/actions/workflows/unit.yml"><img src="https://github.com/SuperSCAD/SmoothProfile/actions/workflows/unit.yml/badge.svg" alt="unit Tests"/></a>
 </td>
 </tr>
 </tbody>
