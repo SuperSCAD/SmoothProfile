@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "Super-SCAD-Smooth-Profile"
-version = "0.3.2"
+version = "0.3.3"
 description = "Interface for Smooth profiles."
 authors = ["P.R. Water <p.r.water@setbased.nl>"]
 license = "MIT"
