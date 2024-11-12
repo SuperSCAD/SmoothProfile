@@ -24,11 +24,31 @@ class SmoothProfileFactory(ABC):
         """
         Returns a smooth profile widget.
 
-        :param inner_angle: Inner angle between the vertices.
+        :param inner_angle: Inner angle between the two vertices of the node.
         :param normal_angle: The normal angle of the vertices, i.e., the angle of the vector that lies exactly between
                              the two vertices and with origin at the node.
         :param position: The position of the node.
         :param child: The child object on which the smoothing must be applied.
+        """
+        raise NotImplementedError()
+
+    # ------------------------------------------------------------------------------------------------------------------
+    @abstractmethod
+    def offset1(self, *, inner_angle: float) -> float:
+        """
+        Returns the offset of the smooth profile on the first vertex of the node.
+
+        :param inner_angle: Inner angle between the two vertices of the node.
+        """
+        raise NotImplementedError()
+
+    # ------------------------------------------------------------------------------------------------------------------
+    @abstractmethod
+    def offset2(self, *, inner_angle: float) -> float:
+        """
+        Returns the offset of the smooth profile on the second vertex of the node.
+
+        :param inner_angle: Inner angle between the two vertices of the node.
         """
         raise NotImplementedError()
 

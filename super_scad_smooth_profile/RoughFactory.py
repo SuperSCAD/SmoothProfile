@@ -1,9 +1,9 @@
 from super_scad.scad.ScadWidget import ScadWidget
 from super_scad.type import Vector2
-from super_scad_smooth_profile.SmoothProfile import SmoothProfile
-from super_scad_smooth_profile.SmoothProfileFactory import SmoothProfileFactory
 
 from super_scad_smooth_profile.Rough import Rough
+from super_scad_smooth_profile.SmoothProfile import SmoothProfile
+from super_scad_smooth_profile.SmoothProfileFactory import SmoothProfileFactory
 
 
 class RoughFactory(SmoothProfileFactory):
@@ -30,3 +30,21 @@ class RoughFactory(SmoothProfileFactory):
         return Rough(child=child)
 
     # ------------------------------------------------------------------------------------------------------------------
+    def offset1(self, *, inner_angle: float) -> float:
+        """
+        Returns the offset of the smooth profile on the first vertex of the node.
+
+        :param inner_angle: Inner angle between the two vertices of the node.
+        """
+        return 0.0
+
+    # ------------------------------------------------------------------------------------------------------------------
+    def offset2(self, *, inner_angle: float) -> float:
+        """
+        Returns the offset of the smooth profile on the second vertex of the node.
+
+        :param inner_angle: Inner angle between the two vertices of the node.
+        """
+        return 0.0
+
+# ----------------------------------------------------------------------------------------------------------------------

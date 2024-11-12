@@ -50,22 +50,4 @@ class SmoothProfile(ScadSingleChildParent, ABC):
         """
         return self.uc(self._args['position'])
 
-    # ------------------------------------------------------------------------------------------------------------------
-    @property
-    @abstractmethod
-    def size1(self) -> float:
-        """
-        Returns the size of the profile on the first vertex at the node.
-        """
-        raise NotImplementedError()
-
-    # ------------------------------------------------------------------------------------------------------------------
-    @property
-    @abstractmethod
-    def size2(self) -> float:
-        """
-        Returns the size of the profile on the second vertex at the node.
-        """
-        raise NotImplementedError()
-
 # ----------------------------------------------------------------------------------------------------------------------
