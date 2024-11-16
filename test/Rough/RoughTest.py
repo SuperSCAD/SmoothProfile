@@ -5,7 +5,7 @@ from super_scad.scad.Context import Context
 from super_scad.scad.Scad import Scad
 from super_scad.type import Vector2
 
-from super_scad_smooth_profile.RoughFactory import RoughFactory
+from super_scad_smooth_profile.Rough import Rough
 from super_scad_smooth_profile.SmoothProfileParams import SmoothProfileParams
 from test.ScadTestCase import ScadTestCase
 
@@ -20,10 +20,10 @@ class RoughTest(ScadTestCase):
         """
         Test the sizes of rough profile.
         """
-        factory = RoughFactory()
+        profile = Rough()
 
-        self.assertAlmostEqual(0.0, factory.offset1(inner_angle=random.uniform(0, 360.0)))
-        self.assertAlmostEqual(0.0, factory.offset2(inner_angle=random.uniform(0, 360.0)))
+        self.assertAlmostEqual(0.0, profile.offset1(inner_angle=random.uniform(0, 360.0)))
+        self.assertAlmostEqual(0.0, profile.offset2(inner_angle=random.uniform(0, 360.0)))
 
     # ------------------------------------------------------------------------------------------------------------------
     def test_on_child(self) -> None:
@@ -35,8 +35,8 @@ class RoughTest(ScadTestCase):
         scad = Scad(context=Context())
         body = Square(size=10.0)
 
-        factory = RoughFactory()
-        body = factory.create_smooth_profile(params=SmoothProfileParams(inner_angle=90.0,
+        profile = Rough()
+        body = profile.create_smooth_profile(params=SmoothProfileParams(inner_angle=90.0,
                                                                         normal_angle=45.0,
                                                                         position=Vector2.origin),
                                              child=body)

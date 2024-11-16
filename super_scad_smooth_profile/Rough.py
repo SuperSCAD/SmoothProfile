@@ -1,29 +1,42 @@
-from super_scad.scad.Context import Context
 from super_scad.scad.ScadSingleChildParent import ScadSingleChildParent
 from super_scad.scad.ScadWidget import ScadWidget
 
+from super_scad_smooth_profile.RoughWidget import RoughWidget
+from super_scad_smooth_profile.SmoothProfile import SmoothProfile
+from super_scad_smooth_profile.SmoothProfileParams import SmoothProfileParams
 
-class Rough(ScadSingleChildParent):
+
+class Rough(SmoothProfile):
     """
-    Applies no finish to the edges at a node.
+    A profile that produces rough smoothing profile widgets.
     """
 
     # ------------------------------------------------------------------------------------------------------------------
-    def __init__(self, *, child: ScadWidget):
+    def create_smooth_profile(self, *, params: SmoothProfileParams, child: ScadWidget) -> ScadSingleChildParent:
         """
-        Object constructor.
+        Returns a smooth profile widget.
 
-        :param child: The child object which will be left rough.
+        :param params: The parameters for the smooth profile widget.
+        :param child: The child object on which the smoothing must be applied.
         """
-        ScadSingleChildParent.__init__(self, args=locals(), child=child)
+        return RoughWidget(child=child)
 
     # ------------------------------------------------------------------------------------------------------------------
-    def build(self, context: Context) -> ScadWidget:
+    def offset1(self, *, inner_angle: float) -> float:
         """
-        Builds a SuperSCAD widget.
+        Returns the offset of the smooth profile on the first vertex of the node.
 
-        :param context: The build context.
+        :param inner_angle: Inner angle between the two vertices of the node.
         """
-        return self.child
+        return 0.0
+
+    # ------------------------------------------------------------------------------------------------------------------
+    def offset2(self, *, inner_angle: float) -> float:
+        """
+        Returns the offset of the smooth profile on the second vertex of the node.
+
+        :param inner_angle: Inner angle between the two vertices of the node.
+        """
+        return 0.0
 
 # ----------------------------------------------------------------------------------------------------------------------
