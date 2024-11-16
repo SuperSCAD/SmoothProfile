@@ -1,12 +1,11 @@
 from super_scad.scad.Context import Context
+from super_scad.scad.ScadSingleChildParent import ScadSingleChildParent
 from super_scad.scad.ScadWidget import ScadWidget
 
-from super_scad_smooth_profile.SmoothProfile import SmoothProfile
 
-
-class Rough(SmoothProfile):
+class Rough(ScadSingleChildParent):
     """
-    Applies no finish to the vertices at a node (a.k.a. edge).
+    Applies no finish to the edges at a node.
     """
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -16,7 +15,7 @@ class Rough(SmoothProfile):
 
         :param child: The child object which will be left rough.
         """
-        SmoothProfile.__init__(self, args=locals(), child=child)
+        ScadSingleChildParent.__init__(self, args=locals(), child=child)
 
     # ------------------------------------------------------------------------------------------------------------------
     def build(self, context: Context) -> ScadWidget:

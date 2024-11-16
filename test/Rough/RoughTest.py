@@ -6,6 +6,7 @@ from super_scad.scad.Scad import Scad
 from super_scad.type import Vector2
 
 from super_scad_smooth_profile.RoughFactory import RoughFactory
+from super_scad_smooth_profile.SmoothProfileParams import SmoothProfileParams
 from test.ScadTestCase import ScadTestCase
 
 
@@ -35,9 +36,9 @@ class RoughTest(ScadTestCase):
         body = Square(size=10.0)
 
         factory = RoughFactory()
-        body = factory.create_smooth_profile(inner_angle=90.0,
-                                             normal_angle=45.0,
-                                             position=Vector2.origin,
+        body = factory.create_smooth_profile(params=SmoothProfileParams(inner_angle=90.0,
+                                                                        normal_angle=45.0,
+                                                                        position=Vector2.origin),
                                              child=body)
 
         scad.run_super_scad(body, path_actual)
