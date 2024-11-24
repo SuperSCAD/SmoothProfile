@@ -25,14 +25,14 @@ class SmoothProfileParams:
     The position of the node.
     """
 
-    side1_is_extended_by_eps: bool = False
+    edge1_is_extended_by_eps: bool = False
     """
-    Whether the first side at the node is extended by eps.
+    Whether the first edge at the node is extended by eps.
     """
 
-    side2_is_extended_by_eps: bool = False
+    edge2_is_extended_by_eps: bool = False
     """
-    Whether the second side at the node is extended by eps.
+    Whether the second edge at the node is extended by eps.
     """
 
 # ----------------------------------------------------------------------------------------------------------------------

@@ -1,19 +1,34 @@
 import random
+import unittest
 
-from super_scad.d2.Square import Square
 from super_scad.scad.Context import Context
-from super_scad.scad.Scad import Scad
 from super_scad.type import Vector2
 
 from super_scad_smooth_profile.Rough import Rough
 from super_scad_smooth_profile.SmoothProfileParams import SmoothProfileParams
-from test.ScadTestCase import ScadTestCase
 
 
-class RoughTest(ScadTestCase):
+class RoughTest(unittest.TestCase):
     """
     Testcases for rough profile.
     """
+
+    # ------------------------------------------------------------------------------------------------------------------
+    def test_convexity(self):
+        """
+        Test the convexity of rough profile.
+        """
+        profile = Rough()
+        self.assertIsNone(profile.convexity)
+
+    # ------------------------------------------------------------------------------------------------------------------
+    def test_internal_external(self):
+        """
+        Test that a rough profile is nighter external nor internal.
+        """
+        profile = Rough()
+        self.assertFalse(profile.is_external)
+        self.assertFalse(profile.is_internal)
 
     # ------------------------------------------------------------------------------------------------------------------
     def test_sizes(self):
@@ -30,20 +45,25 @@ class RoughTest(ScadTestCase):
         """
         Test fillet for convex corners with sharp and oblique angles.
         """
-        path_actual, path_expected = self.paths()
-
-        scad = Scad(context=Context())
-        body = Square(size=10.0)
-
         profile = Rough()
-        body = profile.create_smooth_profile(params=SmoothProfileParams(inner_angle=90.0,
-                                                                        normal_angle=45.0,
-                                                                        position=Vector2.origin),
-                                             child=body)
+        negative, positive = profile.create_smooth_profiles(params=SmoothProfileParams(inner_angle=90.0,
+                                                                                       normal_angle=45.0,
+                                                                                       position=Vector2.origin))
+        self.assertIsNone(negative)
+        self.assertIsNone(positive)
 
-        scad.run_super_scad(body, path_actual)
-        actual = path_actual.read_text()
-        expected = path_expected.read_text()
-        self.assertEqual(expected, actual)
+    # ------------------------------------------------------------------------------------------------------------------
+    def test_polygon(self) -> None:
+        """
+        Test the polygon of rough profile.
+        """
+        context = Context()
+        profile = Rough()
+        params = SmoothProfileParams(inner_angle=random.uniform(0.0, 360.0),
+                                     normal_angle=random.uniform(0.0, 360.0),
+                                     position=Vector2(random.uniform(0.0, 10.0), random.uniform(0.0, 10.0)))
+        polygon = profile.create_polygon(context=context, params=params)
+
+        self.assertTrue(polygon == [Vector2.origin])
 
 # ----------------------------------------------------------------------------------------------------------------------

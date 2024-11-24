@@ -1,77 +1,73 @@
-from typing import List, Tuple
+from abc import ABC, abstractmethod
+from typing import Tuple
 
-from super_scad.scad.Context import Context
 from super_scad.scad.ScadWidget import ScadWidget
-from super_scad.type.Vector2 import Vector2
 
-from super_scad_smooth_profile.SmoothProfile3D import SmoothProfile3D
 from super_scad_smooth_profile.SmoothProfileParams import SmoothProfileParams
 
 
-class Rough(SmoothProfile3D):
+class SmoothProfile2D(ABC):
     """
-    A profile that produces rough smoothing profile widgets.
+    A 2D smooth profile is an abstract base class for 2D smooth profiles. A smooth profile is an object that creates
+    smooth profile widgets given the parameters of a node and its two vertices.
     """
 
     # ------------------------------------------------------------------------------------------------------------------
+    @abstractmethod
     def create_smooth_profiles(self, *, params: SmoothProfileParams) -> Tuple[ScadWidget | None, ScadWidget | None]:
         """
-        Returns a smooth profile widget.
+        Returns, optionally, two widgets. The first widget must be subtracted, and the second widget must be added to
+        the widget at the position of the node where the smooth profile must be applied.
 
         :param params: The parameters for the smooth profile widget.
         """
-        return None, None
+        raise NotImplementedError()
 
     # ------------------------------------------------------------------------------------------------------------------
     @property
+    @abstractmethod
     def is_external(self) -> bool:
         """
-        Returns whether the fillet is an external fillet.
+        Returns whether the profile is an external profile.
         """
-        return False
+        raise NotImplementedError()
 
     # ------------------------------------------------------------------------------------------------------------------
     @property
+    @abstractmethod
     def is_internal(self) -> bool:
         """
-        Returns whether the fillet is an internal fillet.
+        Returns whether the profile is an internal profile.
         """
-        return False
+        raise NotImplementedError()
 
     # ------------------------------------------------------------------------------------------------------------------
     @property
+    @abstractmethod
     def convexity(self) -> int | None:
         """
         Return the convexity of the profile.
         """
-        return None
+        raise NotImplementedError()
 
     # ------------------------------------------------------------------------------------------------------------------
+    @abstractmethod
     def offset1(self, *, inner_angle: float) -> float:
         """
         Returns the offset of the smooth profile on the first vertex of the node.
 
         :param inner_angle: Inner angle between the two vertices of the node.
         """
-        return 0.0
+        raise NotImplementedError()
 
     # ------------------------------------------------------------------------------------------------------------------
+    @abstractmethod
     def offset2(self, *, inner_angle: float) -> float:
         """
         Returns the offset of the smooth profile on the second vertex of the node.
 
         :param inner_angle: Inner angle between the two vertices of the node.
         """
-        return 0.0
-
-    # ------------------------------------------------------------------------------------------------------------------
-    def create_polygon(self, *, context: Context, params: SmoothProfileParams) -> List[Vector2]:
-        """
-        Returns the profile as a polygon.
-
-        :param context: The build context.
-        :param params: The parameters for the smooth profile widget.
-        """
-        return [Vector2.origin]
+        raise NotImplementedError()
 
 # ----------------------------------------------------------------------------------------------------------------------
