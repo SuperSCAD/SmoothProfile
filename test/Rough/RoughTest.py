@@ -64,6 +64,6 @@ class RoughTest(unittest.TestCase):
                                      position=Vector2(random.uniform(0.0, 10.0), random.uniform(0.0, 10.0)))
         polygon = profile.create_polygon(context=context, params=params)
 
-        self.assertTrue(polygon == [Vector2.origin])
+        self.assertTrue(polygon == [params.position])
 
 # ----------------------------------------------------------------------------------------------------------------------

@@ -72,6 +72,6 @@ class Rough(SmoothProfile3D):
         :param context: The build context.
         :param params: The parameters for the smooth profile widget.
         """
-        return [Vector2.origin]
+        return [params.position]
 
 # ----------------------------------------------------------------------------------------------------------------------
