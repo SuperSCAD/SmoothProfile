@@ -70,4 +70,12 @@ class SmoothProfile2D(ABC):
         """
         raise NotImplementedError()
 
+    # ------------------------------------------------------------------------------------------------------------------
+    @property
+    def side(self) -> int | None:
+        """
+        Returns the edge on which the exterior fillet must be applied. Returns None for non-exterior profiles.
+        """
+        raise NotImplementedError()
+
 # ----------------------------------------------------------------------------------------------------------------------

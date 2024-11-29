@@ -29,6 +29,7 @@ class RoughTest(unittest.TestCase):
         profile = Rough()
         self.assertFalse(profile.is_external)
         self.assertFalse(profile.is_internal)
+        self.assertIsNone(profile.side)
 
     # ------------------------------------------------------------------------------------------------------------------
     def test_sizes(self):

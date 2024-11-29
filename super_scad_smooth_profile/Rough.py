@@ -40,6 +40,14 @@ class Rough(SmoothProfile3D):
 
     # ------------------------------------------------------------------------------------------------------------------
     @property
+    def side(self) -> int | None:
+        """
+        Returns None.
+        """
+        return None
+
+    # ------------------------------------------------------------------------------------------------------------------
+    @property
     def convexity(self) -> int | None:
         """
         Return the convexity of the profile.
